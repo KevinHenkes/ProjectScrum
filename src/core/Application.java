@@ -1,6 +1,7 @@
 package core;
 
 import java.util.Scanner;
+import java.math.*;
 
 public class Application {
 
@@ -16,26 +17,34 @@ public class Application {
 	    System.out.println("Veuillez entrer le premier chiffre :");
 	    int a = Integer.parseInt(sc.nextLine());
 
-	    System.out.println("Veuillez entrer le deuxième chiffre :");
-	    int b = Integer.parseInt(sc.nextLine());
-
-	    System.out.println("Veuillez saisir l'opérateur : (+ - / *)");
+	    System.out.println("Veuillez saisir l'opérateur : (+ - / * V p)");
 	    String operator = sc.nextLine();
-
-	    switch (operator) {
-	    case "+":
-		System.out.println(a + b);
-		break;
-	    case "-":
-		System.out.println(a - b);
-		break;
-	    case "*":
-		System.out.println(a * b);
-		break;
-	    case "/":
-		System.out.println(a / b);
-		break;
+	    
+	    String resultStr = "Le résultat est ";
+	    if (!operator.equals(new String("V"))) {
+	    	System.out.println("Veuillez entrer le deuxième chiffre :");
+		    int b = Integer.parseInt(sc.nextLine());
+		    
+		    switch (operator) {
+			    case "+":
+					System.out.println(resultStr+ (a + b));
+					break;
+			    case "-":
+					System.out.println(resultStr+ (a - b));
+					break;
+			    case "*":
+					System.out.println(resultStr+ (a * b));
+					break;
+			    case "/":
+					System.out.println(resultStr+ (a / b));
+					break;
+			    case "p":
+			    	System.out.println(resultStr+ (Math.pow(a, b)));
+		    }
+	    } else {
+	    	System.out.println(resultStr+ (Math.sqrt(a)));
 	    }
+	    
 	    System.out.println("Continuer ? O/N");
 	    String input = sc.nextLine();
 
